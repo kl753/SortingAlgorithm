@@ -1,3 +1,5 @@
+//Elementary Sorts:
+
 // Selection Sort
 public class Selection {
 	function swap(arr, x, y) {
@@ -23,3 +25,35 @@ public class Selection {
 		}
 	}
 }
+
+//Insertion sort
+public class Insertion {
+	function sort(arr, n) {
+		var i, j, key;
+
+		for (i = 1; i < n; i++) {
+			key = arr[1];
+			j = i-1;
+
+			//Move elements of arr[0...i-1] that are greater than key
+			//to one position ahead of current position
+			while (j >= 0 && arr[j] > key) {
+				arr[j+1] = arr[j];
+				j = j-1;
+			}
+			arr[j+1] = key
+		}
+	}
+}
+
+
+//Shellsort
+public class Shell {
+
+}
+
+//Mergesorts:
+
+//Quicksorts:
+
+//Priority Queues:
