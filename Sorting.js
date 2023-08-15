@@ -3,7 +3,7 @@
 // Selection Sort
 public class Selection {
 	function swap(arr, x, y) {
-		var temp = arr[x];
+		let temp = arr[x];
 		arr[x] = arr[y];
 		arr[y] = temp;
 	}
@@ -49,7 +49,35 @@ public class Insertion {
 
 //Shellsort
 public class Shell {
+	function sort(arr) {
+		let n = arr.length;
 
+		//Start with big gap, then reduce gap
+		for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2)) {
+
+			//Gapped insertion sort for this gap size
+			//The first gapped elements are in order, 
+			//keep adding element until entire arry is gap sorted
+			for (let i = gap; i < n; i += 1) {
+
+				//Add arr[i] to the elements that have been gap sorted
+				//Save arr[i] in temp and make a hole at pos i
+				let temp = arr[i];
+
+				//Shift earlier gap-sorted elements up until
+				//the correct location for arr[i] is found.
+				var j;
+
+				for (j = i; j >= gap && arr[j-gap] > temp; j -= gap) {
+					arr[j] = arr[j - gap];
+
+					//Put temp in its correct location
+					arr[j] = temp
+				}
+			}
+			return arr;
+		}
+	}
 }
 
 //Mergesorts:
