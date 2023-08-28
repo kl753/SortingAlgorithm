@@ -82,6 +82,83 @@ public class Shell {
 
 //Mergesorts:
 
+//3-way Merge:
+public class ThreeMerge {
+	function merge(arr, low, mid1, mid2, high, destArr) {
+		let i = mid1, j = mid2, k = high, l = low;
+
+		//Choose smaller of the smallest in the three ranges
+		while ((i < mid1) && (j < mid2) && (k < high)) {
+			if (arr[i] < arr[j]) {
+				if (arr[i] < arr[k]) {
+					destArr[l++] = arr[i++];
+				}
+				else {
+					destArr[l++] = arr[k++];
+				}
+			}
+			else {
+				if (arr[j] < arr[k]) {
+					destArr[l++] = arr[j++];
+				}
+				else {
+					destArr[l++] = arr[k++];
+				}
+			}
+		}
+
+		//Case where first and second ranges
+		//have remaining values
+		while ((i < mid1) && (j < mid2)) {
+			if (arr[i] < arr[j]) {
+				destArr[l++] = arr[i++];
+			}
+			else {
+				destArr[l++] = arr[k++];
+			}
+		}
+
+		//Case where second and third ranges
+		//have remaining values
+		while ((j < mid2) && (k < high)) {
+			if (arr[j] < arr[k]) {
+				destArr[l++] = arr[j++];
+			}
+			else {
+				destArr[l++] = arr[k++];
+			}
+		}
+
+		//Case where first and third ranges
+		//have remaining values
+		while ((i < mid1) && (k < high)) {
+			if (arr[i] < arr[k]) {
+				destArr[l++] = arr[i++];
+			}
+			else {
+				destArr[l++] = arr[k++];
+			}
+		}
+
+		//Copy remaining values from first range
+		while (i < mid1) {
+			destArr[l++] = arr[i++];
+		}
+
+		//Copy remaining values from second range
+		while (j < mid2) {
+			destArr[l++] = arr[j++];
+		}
+
+		//Copy remaining values from third range
+		while (k < high) {
+			destArr[l++] = arr[k++];
+		}
+	}
+
+
+}
+
 //Quicksorts:
 
 //Priority Queues:
