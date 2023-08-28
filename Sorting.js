@@ -2,6 +2,7 @@
 
 // Selection Sort
 public class Selection {
+
 	function swap(arr, x, y) {
 		let temp = arr[x];
 		arr[x] = arr[y];
@@ -28,6 +29,7 @@ public class Selection {
 
 //Insertion sort
 public class Insertion {
+
 	function sort(arr, n) {
 		var i, j, key;
 
@@ -49,6 +51,7 @@ public class Insertion {
 
 //Shellsort
 public class Shell {
+
 	function sort(arr) {
 		let n = arr.length;
 
@@ -84,7 +87,9 @@ public class Shell {
 
 //3-way Merge:
 public class ThreeMerge {
+
 	function merge(arr, low, mid1, mid2, high, destArr) {
+
 		let i = mid1, j = mid2, k = high, l = low;
 
 		//Choose smaller of the smallest in the three ranges
@@ -156,7 +161,28 @@ public class ThreeMerge {
 		}
 	}
 
+	/*Perform merge sort algorithm on array
+	with range of indices where low is the min index
+	and high is the max index (exclusive)*/
+	function mergeSort3WayRec(arr, low, high, destArr) {
 
+		//If array size is 1, do nothing
+		if (high - low < 2) {
+			return;
+		}
+
+		//Split array into 3 parts
+		let mid1 = low + Math.floor((high - low) / 3)
+		let mid2 = low + 2 * Math.floor((high - low) / 3) + 1;
+
+		//Sort 3 array recursively
+		mergeSort3WayRec(destArr, low, mid1, arr);
+		mergeSort3WayRec(destArr, mid1, mid2, arr);
+		mergeSort3WayRec(destArr, mid2, high, arr);
+
+		//Merge sorted arrays
+		merge(destArr, low, mid1, mid2, high, arr);
+	}
 }
 
 //Quicksorts:
