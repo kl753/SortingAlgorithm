@@ -183,6 +183,30 @@ public class ThreeMerge {
 		//Merge sorted arrays
 		merge(destArr, low, mid1, mid2, high, arr);
 	}
+
+	function mergeSort3Way(arr, n) {
+
+		//If array size is zero return null
+		if (n == 0) {
+			return;
+		}
+
+		//Create ducplicate of given array
+		let arr2 = new Array(n);
+
+		//Copy elements of given array into duplicate Array
+		for (let i = 0; i < n; i++) {
+			arr2[i] = arr[i];
+		}
+
+		//Sort function
+		mergeSort3WayRec(arr2, 0, n, arr);
+
+		//Copy elements of duplicate to given Array
+		for (let i = 0; i < n; i++) {
+			arr[i] = arr2[i];
+		}
+	}
 }
 
 //Quicksorts:
