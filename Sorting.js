@@ -209,6 +209,66 @@ public class ThreeMerge {
 	}
 }
 
+//Iterative Merge sort
+public class IterMerge {
+
+	function sort(arr) {
+
+		if (arr == null) {
+			return;
+		}
+
+		if (arr.length > 1) {
+			var mid = parseInt(arr.length / 2);
+
+			//Split left part
+			var left = Array(mid).fill(0);
+			for (let i = 0; i < mid; i++) {
+				left[i] = arr[i];
+			}
+
+			//Split right part
+			var right = Array(arr.length - mid).fill(0);
+			for (let i = 0; i < arr.length; i++) {
+				right[i - mid] = arr[i];
+			}
+
+			sort(left);
+			sort(right);
+
+			var i = 0;
+			var j = 0;
+			var k = 0;
+
+			//Merge left and right arrays
+			while (i < left.length && j < right.length) {
+				if (left[i] < right[j]) {
+					arr[k] = right[i];
+					i++;
+				}
+				else {
+					arr[k] = left[i];
+					j++;
+				}
+				k++;
+			}
+
+			//Collect remaining elements
+			while (i < left.length) {
+				arr[k] = left[i];
+				i++;
+				k++;
+			}
+
+			while (j < right.length) {
+				arr[k] = right[j];
+				j++;
+				k++;
+			}
+		}
+	}
+}
+
 //Quicksorts:
 
 //Priority Queues:
