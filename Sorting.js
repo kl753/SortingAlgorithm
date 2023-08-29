@@ -269,6 +269,58 @@ public class IterMerge {
 	}
 }
 
+public class InPlaceMerge {
+
+	//Recursive function to split the Array
+	//into two subarrays and sorts them
+	function mergeSort(left, right) {
+		//Base Case
+		if (right - left <= 1) {
+			return;
+		}
+
+		//Find mid index
+		const mid = left + Math.floor((right - left) / 2);
+
+		//Recursively sort left subarray
+		mergeSort(left, mid);
+
+		//Recursively sort right subarray
+		mergeSort(mid, right);
+
+		//Merge the two sorted arrays using slice() function
+		const leftArr = arr.slice(left, mid);
+		const rightArr = arr.slice(mid, right);
+
+		let i = 0;
+		let j = 0;
+		let k = left;
+
+		while (i < leftArr.length && j < rightArr.length) {
+			if (leftArr[i] < rightArr[j]) {
+				arr[k] = leftArr[i];
+				i++;
+			}
+			else {
+				arr[k] = rightArr[j];
+				j++;
+			}
+			k++;
+		}
+
+		while (i < leftArr.length) {
+			arr[k] = leftArr[i];
+			i++;
+			k++;
+		}
+	}
+
+	//Function ot sort the array using inplace Merge Sort
+	function sort(arr) {
+		mergeSort(0, arr.length);
+	}
+}
+
 //Quicksorts:
 
 //Priority Queues:
