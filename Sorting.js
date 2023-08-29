@@ -323,4 +323,41 @@ public class InPlaceMerge {
 
 //Quicksorts:
 
+public class quickSort {
+	//Partition the array and return the parition index
+	function partition(arr, low, high) {
+		//Choose the pivot
+		let pivot = arr[high];
+
+		//Index of smaller element and indicates the right
+		//position of pivot found so far
+		let i = low - 1;
+
+		for (let j = low; j <= high - 1; j++) {
+			//If current element is smaller than the pivot
+			if (arr[j] < pivot) {
+				i++;
+				[arr[i], arr[j]] = [arr[j], arr[i]];
+			}
+		}
+
+		[arr[i+1], arr[high]] = [arr[high], arr[i+1]];
+
+		//Swap pivot to its correct position
+		return i+1;
+	}
+
+	function sort(arr, low, high) {
+		if (low < high) {
+			//partitioning index
+			let pi = partition(arr, low, high);
+
+			//Separately sort elements before partition 
+			//and after partition
+			sort(arr, low, pi-1);
+			sort(arr, pi+1, high)
+		}
+	}
+}
+
 //Priority Queues:
